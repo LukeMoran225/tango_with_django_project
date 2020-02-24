@@ -21,7 +21,12 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
-LOGIN_URL = 'rango:login'
+REGISTRATION_OPEN = True
+REGISTRATION_AUTO_LOGIN = True
+LOGIN_REDIRECT_URL = 'rango:index'
+
+
+LOGIN_URL = 'auth_login'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 
@@ -47,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rango',
+    'registration', # Add in the registration package
 ]
 
 MIDDLEWARE = [

@@ -125,7 +125,7 @@ def add_page(request, category_name_slug):
     return render(request, 'rango/add_page.html', context=context_dict)
 
 
-def register(request):
+'''def register(request):
     registered = False
 
     if request.method == 'POST':
@@ -173,7 +173,7 @@ def user_login(request):
             print(f"Invalid login details: {username}, {password}")
             return HttpResponse("Invalid login details supplied.")
     else:
-        return render(request, 'rango/login.html')
+        return render(request, 'rango/login.html')'''
 
 
 @login_required
@@ -181,12 +181,12 @@ def restricted(request):
     return render(request, 'rango/restricted.html')
 
 
-@login_required
+'''@login_required
 def user_logout(request):
     # Since we know the user is logged in, we can now just log them out.
     logout(request)
     # Take the user back to the homepage.
-    return redirect(reverse('rango:index'))
+    return redirect(reverse('rango:index'))'''
 
 
 def get_server_side_cookie(request, cookie, default_val=None):

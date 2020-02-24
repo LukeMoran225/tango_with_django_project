@@ -28,26 +28,26 @@ FAILURE_FOOTER = f"{os.linesep}"
 
 class Chapter4TemplatesStructureTests(TestCase):
     """
-    Have you set templates, static files and media files up correctly, as per the book?
+    Have you set registration, static files and media files up correctly, as per the book?
     """
     def setUp(self):
         self.project_base_dir = os.getcwd()
-        self.templates_dir = os.path.join(self.project_base_dir, 'templates')
+        self.templates_dir = os.path.join(self.project_base_dir, 'registration')
         self.rango_templates_dir = os.path.join(self.templates_dir, 'rango')
     
     def test_templates_directory_exists(self):
         """
-        Does the templates/ directory exist?
+        Does the registration/ directory exist?
         """
         directory_exists = os.path.isdir(self.templates_dir)
-        self.assertTrue(directory_exists, f"{FAILURE_HEADER}Your project's templates directory does not exist.{FAILURE_FOOTER}")
+        self.assertTrue(directory_exists, f"{FAILURE_HEADER}Your project's registration directory does not exist.{FAILURE_FOOTER}")
     
     def test_rango_templates_directory_exists(self):
         """
-        Does the templates/rango/ directory exist?
+        Does the registration/rango/ directory exist?
         """
         directory_exists = os.path.isdir(self.rango_templates_dir)
-        self.assertTrue(directory_exists, f"{FAILURE_HEADER}The Rango templates directory does not exist.{FAILURE_FOOTER}")
+        self.assertTrue(directory_exists, f"{FAILURE_HEADER}The Rango registration directory does not exist.{FAILURE_FOOTER}")
     
     def test_template_dir_setting(self):
         """
@@ -62,7 +62,7 @@ class Chapter4TemplatesStructureTests(TestCase):
     
     def test_template_lookup_path(self):
         """
-        Does the TEMPLATE_DIR value appear within the lookup paths for templates?
+        Does the TEMPLATE_DIR value appear within the lookup paths for registration?
         """
         lookup_list = settings.TEMPLATES[0]['DIRS']
         found_path = False
@@ -73,11 +73,11 @@ class Chapter4TemplatesStructureTests(TestCase):
             if entry_normalised == os.path.normpath(settings.TEMPLATE_DIR):
                 found_path = True
         
-        self.assertTrue(found_path, f"{FAILURE_HEADER}Your project's templates directory is not listed in the TEMPLATES>DIRS lookup list. Check your settings.py module.{FAILURE_FOOTER}")
+        self.assertTrue(found_path, f"{FAILURE_HEADER}Your project's registration directory is not listed in the TEMPLATES>DIRS lookup list. Check your settings.py module.{FAILURE_FOOTER}")
     
     def test_templates_exist(self):
         """
-        Do the index.html and about.html templates exist in the correct place?
+        Do the index.html and about.html registration exist in the correct place?
         """
         index_path = os.path.join(self.rango_templates_dir, 'index.html')
         about_path = os.path.join(self.rango_templates_dir, 'about.html')
@@ -88,7 +88,7 @@ class Chapter4TemplatesStructureTests(TestCase):
 
 class Chapter4IndexPageTests(TestCase):
     """
-    A series of tests to ensure that the index page/view has been updated to work with templates.
+    A series of tests to ensure that the index page/view has been updated to work with registration.
     Image tests are in the Chapter4StaticMediaTests suite.
     """
     def setUp(self):
@@ -211,7 +211,7 @@ class Chapter4ExerciseTests(TestCase):
     """
     def setUp(self):
         self.project_base_dir = os.getcwd()
-        self.template_dir = os.path.join(self.project_base_dir, 'templates', 'rango')
+        self.template_dir = os.path.join(self.project_base_dir, 'registration', 'rango')
         self.about_response = self.client.get(reverse('rango:about'))
     
     def test_about_template_exists(self):
